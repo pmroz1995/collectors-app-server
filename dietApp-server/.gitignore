@@ -1,0 +1,9 @@
+target
+*.iml
+.idea
+bin
+.classpath
+.project
+**/build
+bazaDanych1.mv.db
+bazaDanych1.trace.db
