@@ -1,8 +1,8 @@
-package com.example.dietApp.config;
+package com.example.collectorsApp.config;
 
-import com.example.dietApp.dao.CoinRepository;
-import com.example.dietApp.dao.entity.Coin;
-import com.example.dietApp.services.CoinService;
+import com.example.collectorsApp.dao.CoinRepository;
+import com.example.collectorsApp.dao.entity.Coin;
+import com.example.collectorsApp.services.CoinService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.example.dietApp.dao.entity;
+package com.example.collectorsApp.dao.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

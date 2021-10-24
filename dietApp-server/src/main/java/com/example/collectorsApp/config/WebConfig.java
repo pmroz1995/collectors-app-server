@@ -1,10 +1,8 @@
-package com.example.dietApp.config;
+package com.example.collectorsApp.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-import java.awt.*;
 
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {

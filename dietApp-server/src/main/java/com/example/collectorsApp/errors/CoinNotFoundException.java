@@ -1,4 +1,4 @@
-package com.example.dietApp.errors;
+package com.example.collectorsApp.errors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

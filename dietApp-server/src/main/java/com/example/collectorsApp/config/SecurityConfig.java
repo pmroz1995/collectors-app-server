@@ -1,4 +1,4 @@
-package com.example.dietApp.config;
+package com.example.collectorsApp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

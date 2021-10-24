@@ -1,7 +1,7 @@
-package com.example.dietApp.controllers;
+package com.example.collectorsApp.controllers;
 
-import com.example.dietApp.dao.entity.Coin;
-import com.example.dietApp.services.CoinService;
+import com.example.collectorsApp.dao.entity.Coin;
+import com.example.collectorsApp.services.CoinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

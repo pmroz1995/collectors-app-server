@@ -1,8 +1,8 @@
-package com.example.dietApp.services;
+package com.example.collectorsApp.services;
 
-import com.example.dietApp.dao.CoinRepository;
-import com.example.dietApp.dao.entity.Coin;
-import com.example.dietApp.errors.CoinNotFoundException;
+import com.example.collectorsApp.dao.CoinRepository;
+import com.example.collectorsApp.dao.entity.Coin;
+import com.example.collectorsApp.errors.CoinNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
