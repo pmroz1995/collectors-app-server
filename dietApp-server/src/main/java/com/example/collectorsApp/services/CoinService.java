@@ -1,6 +1,6 @@
-package com.example.dietApp.services;
+package com.example.collectorsApp.services;
 
-import com.example.dietApp.dao.entity.Coin;
+import com.example.collectorsApp.dao.entity.Coin;
 
 import java.util.List;
 
