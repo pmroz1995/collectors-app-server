@@ -32,4 +32,38 @@ public class Coin implements Serializable {
 
     private String coinCode;
 
+    public Coin id(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public Coin coinName(String coinName) {
+        this.coinName = coinName;
+        return this;
+    }
+
+    public Coin weight(Integer weight) {
+        this.weight = weight;
+        return this;
+    }
+
+    public Coin ore(String ore) {
+        this.ore = ore;
+        return this;
+    }
+
+    public Coin dateOfProduction(String dateOfProduction) {
+        this.dateOfProduction = dateOfProduction;
+        return this;
+    }
+
+    public Coin imageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Coin coinCode(String coinCode) {
+        this.coinCode = coinCode;
+        return this;
+    }
 }

@@ -13,12 +13,14 @@ import java.util.List;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String FRONTEND_URL = "http://localhost:4200";
-    private static final List<String> ALLOWED_METHODS = List.of("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH");
-    private static final List<String> ALLOWED_HEADERS = List.of("Authorization", "Cache-Control", "Content-Type");
+    private static final List<String> ALLOWED_METHODS = List.of("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH","OPTIONS");
+    private static final List<String> ALLOWED_HEADERS = List.of("Authorization", "Cache-Control", "Content-Type", "Access-Control-Allow-Origin",
+            "Origin", "Accept", "Authorization", "X-Request-With", "Access-Control-Request-Method","Access-Control-Request-Headers"
+    );
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors();
+        http.cors().and().csrf().disable();
     }
 
     @Bean
@@ -32,6 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // setAllowedHeaders is important! Without it, OPTIONS preflight request
         // will fail with 403 Invalid CORS request
         configuration.setAllowedHeaders(ALLOWED_HEADERS);
+        configuration.setExposedHeaders(ALLOWED_HEADERS);
+
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
