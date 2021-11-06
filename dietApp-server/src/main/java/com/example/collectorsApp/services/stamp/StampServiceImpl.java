@@ -4,6 +4,7 @@ import com.example.collectorsApp.dao.StampRepository;
 import com.example.collectorsApp.dao.entity.Stamp;
 import com.example.collectorsApp.errors.CoinNotFoundException;
 import com.example.collectorsApp.errors.StampNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +19,7 @@ public class StampServiceImpl implements StampService {
     private final static String STAMP_NOT_FOUND = "Stamp not found.";
     private StampRepository stampRepository;
 
+    @Autowired
     public StampServiceImpl(StampRepository stampRepository) {
         this.stampRepository = stampRepository;
     }

@@ -26,26 +26,26 @@ public class StampController {
 
 
     @GetMapping("/find{id}")
-    public ResponseEntity<Stamp> getStamp(@PathVariable("id") Long id) {
+    public ResponseEntity<Stamp> getStamp(@PathVariable("id") final Long id) {
         Stamp stamp = stampService.findStampById(id);
         return new ResponseEntity(stamp, HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public ResponseEntity<Stamp> addStamp(@RequestBody Stamp stamp) {
+    public ResponseEntity<Stamp> addStamp(@RequestBody final Stamp stamp) {
         Stamp stampForAdding = stampService.addStamp(stamp);
         return new ResponseEntity(stamp, HttpStatus.CREATED);
     }
 
 
     @PutMapping("/update")
-    public ResponseEntity<Stamp> updateStamp(@RequestBody Stamp stamp) {
+    public ResponseEntity<Stamp> updateStamp(@RequestBody final Stamp stamp) {
         Stamp stampForAdding = stampService.updateStamp(stamp);
         return new ResponseEntity(stamp, HttpStatus.CREATED);
     }
 
     @DeleteMapping("delete/{id}")
-    public ResponseEntity<?> deleteStamp(@PathVariable("id") Long id) {
+    public ResponseEntity<?> deleteStamp(@PathVariable("id") final Long id) {
         stampService.deleteStamp(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
