@@ -24,7 +24,7 @@ public class TotalPriceServiceImpl implements TotalPriceService {
     }
 
     @Override
-    public int getTotalPrize() {
+    public int getTotalPrice() {
         return Stream.of(
                 coinRepository.findAll()
                         .stream()

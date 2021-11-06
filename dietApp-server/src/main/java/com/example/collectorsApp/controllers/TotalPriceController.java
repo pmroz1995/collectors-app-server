@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/api/totalPrize")
+@RequestMapping(value = "/api/totalPrice")
 public class TotalPriceController {
 
     private TotalPriceService totalPriceService;
@@ -21,8 +21,8 @@ public class TotalPriceController {
     }
 
     @GetMapping("/get")
-    public ResponseEntity<Integer> getTotalPrize() {
-        int totalSum = totalPriceService.getTotalPrize();
+    public ResponseEntity<Integer> getTotalPrice() {
+        int totalSum = totalPriceService.getTotalPrice();
         return new ResponseEntity(totalSum, HttpStatus.OK);
     }
 }
