@@ -5,69 +5,61 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Getter
 @Entity
 @Setter
 @NoArgsConstructor
-public class Coin implements Serializable {
+public class Watch {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
-    private String coinName;
+    private String watchName;
 
     private Integer weight;
 
-    private String ore;
+    private String dateOfProduction;
 
     private int prizePln;
-
-    private String dateOfProduction;
 
     @Lob
     private String imageUrl;
 
-    private String coinCode;
+    private String watchCode;
 
-    public Coin id(Long id) {
+    public Watch id(Long id) {
         this.id = id;
         return this;
     }
 
-    public Coin coinName(String coinName) {
-        this.coinName = coinName;
+    public Watch watchName(String watchName) {
+        this.watchName = watchName;
         return this;
     }
 
-    public Coin weight(Integer weight) {
+    public Watch weight(Integer weight) {
         this.weight = weight;
         return this;
     }
 
-    public Coin ore(String ore) {
-        this.ore = ore;
-        return this;
-    }
-
-    public Coin dateOfProduction(String dateOfProduction) {
+    public Watch dateOfProduction(String dateOfProduction) {
         this.dateOfProduction = dateOfProduction;
         return this;
     }
 
-    public Coin imageUrl(String imageUrl) {
+    public Watch imageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
 
-    public Coin coinCode(String coinCode) {
-        this.coinCode = coinCode;
+    public Watch watchCode(String watchCode) {
+        this.watchCode = watchCode;
         return this;
     }
 
-    public Coin prizePln(int prizePln) {
+    public Watch prizePln(int prizePln) {
         this.prizePln = prizePln;
         return this;
     }

@@ -1,18 +1,20 @@
-package com.example.collectorsApp.services;
+package com.example.collectorsApp.services.coin;
 
 import com.example.collectorsApp.dao.CoinRepository;
 import com.example.collectorsApp.dao.entity.Coin;
 import com.example.collectorsApp.errors.CoinNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@Transactional
 public class CoinServiceImpl implements CoinService {
 
-    private final String COIN_NOT_FOUND = "Coin not found.";
+    private final static String COIN_NOT_FOUND = "Coin not found.";
     private CoinRepository coinRepository;
 
     @Autowired

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CoinRepository extends JpaRepository<Coin, Long> {
+
     void deleteCoinById(Long id);
 
     Coin findCoinById(Long id);

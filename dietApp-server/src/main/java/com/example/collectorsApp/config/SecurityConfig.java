@@ -12,6 +12,7 @@ import java.util.List;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     private static final String FRONTEND_URL = "http://localhost:4200";
     private static final List<String> ALLOWED_METHODS = List.of("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH","OPTIONS");
     private static final List<String> ALLOWED_HEADERS = List.of("Authorization", "Cache-Control", "Content-Type", "Access-Control-Allow-Origin",

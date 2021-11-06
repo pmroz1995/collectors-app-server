@@ -1,10 +1,11 @@
-package com.example.collectorsApp.services;
+package com.example.collectorsApp.services.coin;
 
 import com.example.collectorsApp.dao.entity.Coin;
 
 import java.util.List;
 
 public interface CoinService {
+
     List<Coin> findAll();
 
     Coin addCoin(Coin product);
