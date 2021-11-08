@@ -6,6 +6,7 @@ import com.example.collectorsApp.dao.WatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,21 +25,41 @@ public class TotalPriceServiceImpl implements TotalPriceService {
     }
 
     @Override
-    public int getTotalPrice() {
-        return Stream.of(
-                coinRepository.findAll()
-                        .stream()
-                        .map(r -> r.getPrizePln())
-                        .collect(Collectors.summingInt(Integer::intValue)),
-                watchRepository.findAll()
-                        .stream()
-                        .map(r -> r.getPrizePln())
-                        .collect(Collectors.summingInt(Integer::intValue)),
-                stampRepository.findAll()
-                        .stream()
-                        .map( r -> r.getPrizePln())
-                        .collect(Collectors.summingInt(Integer::intValue))
-                ).mapToInt(Integer::valueOf)
-                .sum();
+    public List<ObjectForPrint> getTotalPrice() {
+        return List.of(
+                new ObjectForPrint()
+                        .totalPrice(
+                                Stream.of(
+                                        coinRepository.findAll()
+                                                .stream()
+                                                .map(r -> r.getPrizePln())
+                                                .collect(Collectors.summingInt(Integer::intValue)),
+                                        watchRepository.findAll()
+                                                .stream()
+                                                .map(r -> r.getPrizePln())
+                                                .collect(Collectors.summingInt(Integer::intValue)),
+                                        stampRepository.findAll()
+                                                .stream()
+                                                .map(r -> r.getPrizePln())
+                                                .collect(Collectors.summingInt(Integer::intValue))
+                                ).mapToInt(Integer::valueOf)
+                                        .sum()
+                        )
+        );
     }
+
+    public class ObjectForPrint {
+
+        Integer totalPrice;
+
+        public ObjectForPrint totalPrice(Integer totalPrice) {
+            this.totalPrice = totalPrice;
+            return this;
+        }
+
+        public Integer getTotalPrice() {
+            return totalPrice;
+        }
+    }
+
 }

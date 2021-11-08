@@ -1,6 +1,7 @@
 package com.example.collectorsApp.services.totalPrice;
+import java.util.List;
 
 public interface TotalPriceService {
 
-    int getTotalPrice();
+    List<TotalPriceServiceImpl.ObjectForPrint> getTotalPrice();
 }

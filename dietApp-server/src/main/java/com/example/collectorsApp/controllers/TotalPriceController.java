@@ -1,12 +1,15 @@
 package com.example.collectorsApp.controllers;
 
 import com.example.collectorsApp.services.totalPrice.TotalPriceService;
+import com.example.collectorsApp.services.totalPrice.TotalPriceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 @RestController
@@ -21,8 +24,9 @@ public class TotalPriceController {
     }
 
     @GetMapping("/get")
-    public ResponseEntity<Integer> getTotalPrice() {
-        int totalSum = totalPriceService.getTotalPrice();
-        return new ResponseEntity(totalSum, HttpStatus.OK);
+    public ResponseEntity<List<TotalPriceServiceImpl.ObjectForPrint>> getTotalPrice() {
+        List<TotalPriceServiceImpl.ObjectForPrint> totalPrice = totalPriceService.getTotalPrice();
+        return new ResponseEntity(totalPrice, HttpStatus.OK);
     }
+
 }
