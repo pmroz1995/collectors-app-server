@@ -5,11 +5,14 @@ import com.example.collectorsApp.dao.entity.Stamp;
 import com.example.collectorsApp.errors.CoinNotFoundException;
 import com.example.collectorsApp.errors.StampNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -19,6 +22,12 @@ public class StampServiceImpl implements StampService {
     private final static String STAMP_NOT_FOUND = "Stamp not found.";
     private StampRepository stampRepository;
 
+    private String getUsername() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        return userDetails.getUsername();
+    }
+
     @Autowired
     public StampServiceImpl(StampRepository stampRepository) {
         this.stampRepository = stampRepository;
@@ -26,12 +35,15 @@ public class StampServiceImpl implements StampService {
 
     @Override
     public List<Stamp> findAll() {
-       return stampRepository.findAll();
+       return stampRepository.findAll().stream()
+               .filter(r -> r.getUsername().equals(getUsername().trim()))
+               .collect(Collectors.toList());
     }
 
     @Override
     public Stamp addStamp(Stamp stamp) {
         stamp.stampCode(UUID.randomUUID().toString());
+        stamp.username(getUsername());
         return stampRepository.save(stamp);
     }
 

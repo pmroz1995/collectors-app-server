@@ -27,6 +27,12 @@ public class Coin implements Serializable {
 
     private String dateOfProduction;
 
+    public String getUsername() {
+        return username;
+    }
+
+    private String username;
+
     @Lob
     private String imageUrl;
 
@@ -69,6 +75,11 @@ public class Coin implements Serializable {
 
     public Coin prizePln(int prizePln) {
         this.prizePln = prizePln;
+        return this;
+    }
+
+    public Coin username(String username) {
+        this.username = username;
         return this;
     }
 }

@@ -24,6 +24,12 @@ public class Watch {
 
     private int prizePln;
 
+    public String getUsername() {
+        return username;
+    }
+
+    private String username;
+
     @Lob
     private String imageUrl;
 
@@ -61,6 +67,11 @@ public class Watch {
 
     public Watch prizePln(int prizePln) {
         this.prizePln = prizePln;
+        return this;
+    }
+
+    public Watch username(String username) {
+        this.username = username;
         return this;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.collectorsApp.login.jwt;
 
 import java.util.Date;
+import java.util.function.Function;
 
 import com.example.collectorsApp.login.services.UserDetailsImpl;
 import io.jsonwebtoken.*;
@@ -54,4 +55,21 @@ public class JwtUtils {
 
         return false;
     }
+
+    public String getUsernameFromToken(String token) {
+        return getClaimFromToken(token, Claims::getSubject);
+    }
+
+    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = getAllClaimsFromToken(token);
+        return claimsResolver.apply(claims);
+    }
+
+    private Claims getAllClaimsFromToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(jwtSecret)
+                .parseClaimsJws(token)
+                .getBody();
+    }
+
 }

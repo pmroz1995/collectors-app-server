@@ -1,10 +1,15 @@
 package com.example.collectorsApp.controllers;
 
 import com.example.collectorsApp.dao.entity.Coin;
+import com.example.collectorsApp.login.jwt.AuthTokenFilter;
+import com.example.collectorsApp.login.jwt.JwtUtils;
 import com.example.collectorsApp.services.coin.CoinService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +21,9 @@ public class CoinController {
     private CoinService coinService;
 
     @Autowired
+    private JwtUtils jwtUtils;
+
+    @Autowired
     public CoinController(CoinService productService) {
         this.coinService = productService;
     }
@@ -25,7 +33,6 @@ public class CoinController {
         List<Coin> coins = coinService.findAll();
         return new ResponseEntity<>(coins, HttpStatus.OK);
     }
-
 
     @GetMapping("/find{id}")
     public ResponseEntity<Coin> getCoin(@PathVariable("id") Long id) {

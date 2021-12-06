@@ -1,8 +1,8 @@
 package com.example.collectorsApp.services.totalPrice;
 
-import com.example.collectorsApp.dao.CoinRepository;
-import com.example.collectorsApp.dao.StampRepository;
-import com.example.collectorsApp.dao.WatchRepository;
+import com.example.collectorsApp.services.coin.CoinService;
+import com.example.collectorsApp.services.stamp.StampService;
+import com.example.collectorsApp.services.watch.WatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,16 +13,17 @@ import java.util.stream.Stream;
 @Service
 public class TotalPriceServiceImpl implements TotalPriceService {
 
-    private CoinRepository coinRepository;
-    private WatchRepository watchRepository;
-    private StampRepository stampRepository;
+    private CoinService coinService;
+    private WatchService watchService;
+    private StampService stampService;
 
     @Autowired
-    public TotalPriceServiceImpl(CoinRepository coinRepository, WatchRepository watchRepository, StampRepository stampRepository) {
-        this.coinRepository = coinRepository;
-        this.watchRepository = watchRepository;
-        this.stampRepository = stampRepository;
+    public TotalPriceServiceImpl(CoinService coinService, WatchService watchService, StampService stampService) {
+        this.coinService = coinService;
+        this.watchService = watchService;
+        this.stampService = stampService;
     }
+
 
     @Override
     public List<ObjectForPrint> getTotalPrice() {
@@ -30,15 +31,15 @@ public class TotalPriceServiceImpl implements TotalPriceService {
                 new ObjectForPrint()
                         .totalPrice(
                                 Stream.of(
-                                        coinRepository.findAll()
+                                        coinService.findAll()
                                                 .stream()
                                                 .map(r -> r.getPrizePln())
                                                 .collect(Collectors.summingInt(Integer::intValue)),
-                                        watchRepository.findAll()
+                                        watchService.findAll()
                                                 .stream()
                                                 .map(r -> r.getPrizePln())
                                                 .collect(Collectors.summingInt(Integer::intValue)),
-                                        stampRepository.findAll()
+                                        stampService.findAll()
                                                 .stream()
                                                 .map(r -> r.getPrizePln())
                                                 .collect(Collectors.summingInt(Integer::intValue))

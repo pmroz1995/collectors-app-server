@@ -25,6 +25,12 @@ public class Stamp {
     @Lob
     private String imageUrl;
 
+    public String getUsername() {
+        return username;
+    }
+
+    private String username;
+
     private String stampCode;
 
     public Stamp id(Long id) {
@@ -54,6 +60,11 @@ public class Stamp {
 
     public Stamp prizePln(int PrizePln) {
         this.prizePln = PrizePln;
+        return this;
+    }
+
+    public Stamp username(String username) {
+        this.username = username;
         return this;
     }
 }
